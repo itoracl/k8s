@@ -1,0 +1,19 @@
+- hosts: all 
+  become: yes
+  tasks:
+    - name: reset the cluster
+      shell: kubeadm reset --force
+      args:
+        chdir: $HOME
+      register: kubeadm
+
+    - debug: 
+        var: kubeadm.stdout_lines
+
+    - name: delete .kube directory
+      become: yes
+      become_user: cloudshell 
+      file:
+        path: $HOME/.kube
+        state: absent
+

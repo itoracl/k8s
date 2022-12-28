@@ -1,0 +1,11 @@
+- hosts: k8s
+  roles:
+    - role: jenkins-install
+  become: yes
+  tasks:
+    - name: initial Jenkins admin password
+      shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: adm
+
+    - debug: 
+        var: adm.stdout_lines

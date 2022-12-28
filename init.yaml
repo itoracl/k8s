@@ -1,0 +1,60 @@
+- hosts: k8s
+  roles:
+    - role: k8s
+  become: yes
+  tasks:
+    - name: initialize the cluster
+      shell: kubeadm init --pod-network-cidr=10.244.0.0/16
+      args:
+        chdir: $HOME
+        creates: /etc/kubernetes/admin.conf
+      register: kubeadm
+
+    - debug: 
+        var: kubeadm.stdout_lines
+
+    - name: create .kube directory
+      become: yes
+      become_user: cloudshell 
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: 0755
+
+    - name: copy admin.conf to user's kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/cloudshell/.kube/config
+        remote_src: yes
+        owner: cloudshell
+        mode: 0700
+
+    - name: install Pod network
+      become: yes
+      become_user: cloudshell
+      shell: kubectl apply -f ~/kube/kube-flannel.yml 
+      args:
+        chdir: $HOME
+
+    - name: Install dashboard helm chart from a repo specifying path
+      become: yes
+      become_user: cloudshell
+      kubernetes.core.helm:
+        chart_repo_url: https://kubernetes.github.io/dashboard/
+        chart_ref: kubernetes-dashboard
+        state: present
+        name: kubernetes-dashboard
+        namespace: kubernetes-dashboard
+        create_namespace: true
+
+    - name: Install ingress controller helm chart from a repo specifying path
+      become: yes
+      become_user: cloudshell
+      kubernetes.core.helm:
+        chart_repo_url: https://kubernetes.github.io/ingress-nginx
+        chart_ref: ingress-nginx
+        state: present
+        name: ingress-nginx
+        namespace: ingress-nginx
+        create_namespace: true
+

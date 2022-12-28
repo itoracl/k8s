@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: create the 'cloudshell' user
+      user: name=cloudshell append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'cloudshell' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'cloudshell ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the  user
+      authorized_key: user=cloudshell key="{{item}}"
+      with_file:
+        - ~/.ssh/id_rsa.pub
