@@ -43,4 +43,4 @@
 #      become_user: "{{username}}"
       command: ssh_copy_id -i "{{ item }}" "{{ username }}"@"{{ hostname }}" 
       with_file:
-        - "{{userhome.stdout_lines[0]}}/.ssh/id_rsa.pub"
+        - "{{userhome.stdout_lines[0]}}/.ssh/id_rsa.pub" 
