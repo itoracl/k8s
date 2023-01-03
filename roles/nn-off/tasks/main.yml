@@ -12,4 +12,14 @@
      state: stopped
      enabled: no
      masked: yes
+   ignore_errors: true
    with_list: "{{ un.disb }}"
+   
+ - name: Disable SWAP 1/2 (swapoff)
+   shell: swapoff -a
+
+ - name: Disable SWAP 2/2 (fstab)
+   replace:
+     path: /etc/fstab
+     regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+     replace: '# \1'  
