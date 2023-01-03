@@ -1,11 +1,6 @@
 ---
 # tasks file for nn-off
 
- - debug:
-     var: "{{ item }}"
-   with_list: "{{ un.disb }}"
-
-
  - name: disable units
    systemd:
      name: "{{ item }}"
