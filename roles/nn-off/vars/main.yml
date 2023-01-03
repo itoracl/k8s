@@ -1,2 +1,7 @@
 ---
 # vars file for nn-off
+u:
+ disabled:
+   - ModemManager.service
+   - rsyslogd.service
+   - syslog.socket

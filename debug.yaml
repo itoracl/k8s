@@ -1,6 +1,7 @@
 - hosts: k8s
   roles:
-    - role: containerd
+    - role: nn-off
+    #- role: containerd
   become_user: cloudshell
   tasks:
     - debug:
