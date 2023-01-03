@@ -1,9 +1,2 @@
 ---
 # tasks file for k8s-prereq
- - name: disable units
-   systemd:
-     name: "{{ item }}"
-     state: stopped
-     enabled: no
-     masked: yes
-   with_dict: "{{u.disabled}}"
