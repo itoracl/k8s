@@ -11,6 +11,6 @@
         - "{{ content.install}}"
         - "{{ content.service}}"
         
-- name: Extract archived
-  unarchive:
-    src:
+#- name: Extract archived
+#  unarchive:
+#    src:
