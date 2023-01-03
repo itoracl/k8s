@@ -1,6 +1,6 @@
 ---
 # tasks file for nn-off
-become: yes
+- become: yes
 
  - debug:
      var: "{{ item }}"
