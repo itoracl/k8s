@@ -11,6 +11,13 @@
         - "{{ content.install}}"
         - "{{ content.service}}"
         
+- name: Copy artifacts
+  copy:
+    src: "/tmp/{{ item.value }}"
+    dest: "/tmp/{{ item.path }}"
+    remote_src: yes
+  with_dict: "{{ content.service }}"
+        
 #- name: Extract archived
 #  unarchive:
 #    src:
