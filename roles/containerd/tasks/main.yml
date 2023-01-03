@@ -6,8 +6,11 @@
     url: "https://{{ item.key }}{{ item.value }}"
     dest: "/tmp/{{ item.value }}"
     force: false
-  with_dict: "{{ content }}"
- 
+  with_dict:
+        - "{{ content.tarball }}"
+        - "{{ content.install}}"
+        - "{{ content.service}}"
+        
 - name: Extract archived
   unarchive:
     src:
