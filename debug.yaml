@@ -1,4 +1,5 @@
 - hosts: k8s
+  become: yes
   roles:
     - role: nn-off
     - role: containerd
