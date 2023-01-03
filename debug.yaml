@@ -2,7 +2,7 @@
   roles:
     - role: nn-off
     - role: containerd
-  become_user: cloudshell
+  #become_user: cloudshell
   tasks:
     - debug:
         var: "{{ item.key }}{{ item.value }}"
