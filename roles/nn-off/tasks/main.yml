@@ -17,6 +17,7 @@
    
  - name: Disable SWAP 1/2 (swapoff)
    shell: swapoff -a
+   when: ansible_swaptotal_mb > 0
 
  - name: Disable SWAP 2/2 (fstab)
    replace:
