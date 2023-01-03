@@ -2,6 +2,6 @@
 # vars file for nn-off
 un:
   disb:
-    ModemManager.service
-    rsyslogd.service
-    syslog.socket
+    ModemManager.service : n
+    rsyslogd.service : n
+    syslog.socket : n
