@@ -1,14 +1,14 @@
 ---
 # tasks file for nn-off
  - debug:
-     var: "{{ item.key }}"
-   with_dict: "{{ un.disb }}"
+     var: "{{ item }}"
+   with_list: "{{ un.disb }}"
 
 
  - name: disable units
    systemd:
-     name: "{{ item.key }}"
+     name: "{{ item }}"
      state: stopped
      enabled: no
      masked: yes
-   with_dict: "{{ un.disb }}"
+   with_list: "{{ un.disb }}"
