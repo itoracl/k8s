@@ -10,8 +10,7 @@ content:
       - cni-plugins-linux-amd64-v1.1.1.tgz
       - path: /opt/cni/bin
   install:
-    github.com/opencontainers/runc/releases/download/v1.1.4/: 
-      - runc.amd64
+    github.com/opencontainers/runc/releases/download/v1.1.4/ : runc.amd64
   service: 
     raw.githubusercontent.com/containerd/containerd/main/:
       - containerd.service
