@@ -1,12 +1,13 @@
 ---
 # tasks file for nn-off
+become: yes
+
  - debug:
      var: "{{ item }}"
    with_list: "{{ un.disb }}"
 
 
  - name: disable units
-   become: yes
    systemd:
      name: "{{ item }}"
      state: stopped
