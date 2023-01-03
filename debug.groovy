@@ -1,8 +1,5 @@
 pipeline { 
     agent any
-    environment {
-        ANS_HOME = tool('ansible')
-    }
     stages { 
         stage('Deploy') { 
             steps { 
