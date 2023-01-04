@@ -43,7 +43,7 @@
       with_subelements:
 #        - "{{ content.dn-* }}"
         - "{{ content.dntarball }}"
-#        - "{{ content.dn-install }}"
+        - "{{ content.dninstall }}"
         - with
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
