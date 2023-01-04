@@ -8,10 +8,10 @@
     - debug:
         var: "{{ item.0.0 }}"#{{ item.value }}"#{{ item.path}}"
 #      with_dict: 
-      with_list:
-#      with_subelements:
+#      with_list:
+      with_subelements:
         - "{{ content.tarball }}"
-#        - path
+        - path
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
