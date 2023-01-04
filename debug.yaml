@@ -6,7 +6,7 @@
   #become_user: cloudshell
   tasks:
     - debug:
-        var: "{{ item.0.key }}"#{{ item.value }}"#{{ item.path}}"
+        var: "{{ item.0.0 }}"#{{ item.value }}"#{{ item.path}}"
 #      with_dict: 
       with_list:
 #      with_subelements:
