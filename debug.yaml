@@ -15,7 +15,7 @@
          - path: /usr/local/sbin/runc
      - uri: raw.githubusercontent.com/containerd/containerd/main/
        service:
-         - containerd.service
+         - name: containerd.service
          - path: /usr/local/lib/systemd/system/containerd.service
   become: yes
   roles:
@@ -39,7 +39,7 @@
 #      with_list:
       with_subelements:
         - "{{ content }}"
-        - tarball
+        - tarball | install
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
