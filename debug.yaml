@@ -7,8 +7,8 @@
   tasks:
     - debug:
         var: "{{ item.key }}"#{{ item.value }}"#{{ item.path}}"
-#      with_dict: 
-      with_subelements:
+      with_dict: 
+#      with_subelements:
         - "{{ content.tarball }}"
 #        - path
 #        - "{{ content.install}}"
