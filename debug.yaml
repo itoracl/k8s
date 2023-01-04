@@ -6,9 +6,11 @@
   #become_user: cloudshell
   tasks:
     - debug:
-        var: "{{ content.tarball }}" #"{{ item.key }}{{ item.value }}"
+        var: "{{ item.key }}{{ item.value }}"
 #      with_dict: 
-#        - "{{ content.tarball }}"
+      with_subelements:
+        - "{{ content.tarball }}"
+        - path
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
