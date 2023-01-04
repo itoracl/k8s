@@ -23,23 +23,23 @@
     - role: containerd
   #become_user: cloudshell
   tasks:
-    - debug:
-        var: item.0
-      with_list:
-        - "{{ content.tarball }}"
+#    - debug:
+#        var: item.0
+#      with_list:
+#        - "{{ content.tarball }}"
         
     - debug:
         msg: 
-#          - "{{item[0]}} '---'"
+          - "{{ item.0.uri }} '---'"
           #- "{{item[0.0]}} '00 " #{{ item.value }}"#{{ item.path}}"
 #          - "{{item[1]}}"
-           - "{{item.key}} ---"
-           - "{{ item.value }} ----"
-      with_dict: 
+           - "{{ item.1.name }} ----"
+           - "{{ item.1.path }} -----"
+#      with_dict: 
 #      with_list:
-#      with_subelements:
-        - "{{ content.tarball }}"
-#        - path
+      with_subelements:
+        - "{{ content }}"
+        - tarball
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
