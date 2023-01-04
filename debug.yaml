@@ -5,21 +5,21 @@
      - uri: github.com/containerd/containerd/releases/download/v1.6.4/ 
        with: 
          - name: containerd-1.6.4-linux-amd64.tar.gz
-         - path: /usr/local
+           path: /usr/local
      - uri: github.com/containernetworking/plugins/releases/download/v1.1.1/ 
        with: 
          - name: cni-plugins-linux-amd64-v1.1.1.tgz
-         - path: /opt/cni/bin
+           path: /opt/cni/bin
      install:
      - uri: github.com/opencontainers/runc/releases/download/v1.1.4/
        with:
          - name: runc.amd64
-         - path: /usr/local/sbin/runc
+           path: /usr/local/sbin/runc
      service:
      - uri: raw.githubusercontent.com/containerd/containerd/main/
        with:
          - name: containerd.service
-         - path: /usr/local/lib/systemd/system/containerd.service
+           path: /usr/local/lib/systemd/system/containerd.service
   become: yes
   roles:
 #    - role: nn-off
