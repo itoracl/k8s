@@ -1,7 +1,7 @@
 - hosts: k8s
   vars:  
    content:
-     tarball:
+     dn-tarball:
      - uri: github.com/containerd/containerd/releases/download/v1.6.4/ 
        with: 
          - name: containerd-1.6.4-linux-amd64.tar.gz
@@ -10,7 +10,7 @@
        with: 
          - name: cni-plugins-linux-amd64-v1.1.1.tgz
            path: /opt/cni/bin
-     install:
+     dn-install:
      - uri: github.com/opencontainers/runc/releases/download/v1.1.4/
        with:
          - name: runc.amd64
@@ -41,7 +41,7 @@
 #      with_dict: 
 #      with_list:
       with_subelements:
-        - "{{ content.tarball }}"
+        - "{{ content.dn-* }}"
         - with
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
