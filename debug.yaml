@@ -6,7 +6,7 @@
   #become_user: cloudshell
   tasks:
     - debug:
-        var: item
+        var: item.0
       with_list:
         - "{{ content.tarball }}"
         
