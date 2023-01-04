@@ -1,22 +1,15 @@
 - hosts: k8s
   become: yes
-  pre_tasks:
-    - debug:
-        var: "{{ content }}" #"{{ item.key }}{{ item.value }}"
-#      with_dict: 
-#        - "{{ content.tarball }}"
-#        - "{{ content.install}}"
-#        - "{{ content.service}}"
   roles:
     - role: nn-off
     - role: containerd
   #become_user: cloudshell
   tasks:
     - debug:
-        var: "{{ item.key }}{{ item.value }}"
-      with_dict: 
-        - "{{ content.tarball }}"
-        - "{{ content.install}}"
-        - "{{ content.service}}"
+        var: "{{ content }}" #"{{ item.key }}{{ item.value }}"
+#      with_dict: 
+#        - "{{ content.tarball }}"
+#        - "{{ content.install}}"
+#        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
  
