@@ -42,7 +42,7 @@
 #      with_list:
       with_subelements:
 #        - "{{ content.dn-* }}"
-        - [ "{{ content.dntarball }}" , "{{ content.dninstall }}" ]
+        - [ "{{ content.dntarball }}" ]#, "{{ content.dninstall }}" ]
         - with
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
