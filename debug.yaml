@@ -6,7 +6,7 @@
   #become_user: cloudshell
   tasks:
     - debug:
-        var: "{{ content }}" #"{{ item.key }}{{ item.value }}"
+        var: "{{ content.tarball }}" #"{{ item.key }}{{ item.value }}"
 #      with_dict: 
 #        - "{{ content.tarball }}"
 #        - "{{ content.install}}"
