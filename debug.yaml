@@ -41,7 +41,9 @@
 #      with_dict: 
 #      with_list:
       with_subelements:
-        - "{{ content.dn-* }}"
+#        - "{{ content.dn-* }}"
+        - "{{ content.dn-tarball }}"
+        - "{{ content.dn-install }}"
         - with
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
