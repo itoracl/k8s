@@ -1,20 +1,23 @@
 - hosts: k8s
   vars:  
    content:
+     tarball:
      - uri: github.com/containerd/containerd/releases/download/v1.6.4/ 
-       tarball: 
+       with: 
          - name: containerd-1.6.4-linux-amd64.tar.gz
          - path: /usr/local
      - uri: github.com/containernetworking/plugins/releases/download/v1.1.1/ 
-       tarball: 
+       with: 
          - name: cni-plugins-linux-amd64-v1.1.1.tgz
          - path: /opt/cni/bin
+     install:
      - uri: github.com/opencontainers/runc/releases/download/v1.1.4/
-       install:
+       with:
          - name: runc.amd64
          - path: /usr/local/sbin/runc
+     service:
      - uri: raw.githubusercontent.com/containerd/containerd/main/
-       service:
+       with:
          - name: containerd.service
          - path: /usr/local/lib/systemd/system/containerd.service
   become: yes
@@ -38,8 +41,8 @@
 #      with_dict: 
 #      with_list:
       with_subelements:
-        - "{{ content }}"
-        - tarball | install
+        - "{{ content.tarball }}"
+        - with
 #        - "{{ content.install}}"
 #        - "{{ content.service}}"
 #      when: " item.value | regex_search('*gz') "
