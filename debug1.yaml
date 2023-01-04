@@ -13,7 +13,7 @@
     - name: msgv
       debug:
         msg:
-          - "{{ item.item.key }}"
+          - "{{ item.key }}"
       loop: "{{ tst | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
