@@ -14,6 +14,7 @@
       debug:
         msg:
           - "{{ item.key }}"
+          - "{{ item.value.name }}"
       loop: "{{ tst | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
