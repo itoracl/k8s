@@ -12,7 +12,7 @@
         
     - debug:
         var: 
-        - item[0]
+        - item[0] '---'
         - item[0.0] #{{ item.value }}"#{{ item.path}}"
         - item[1]
 #      with_dict: 
