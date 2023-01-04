@@ -1,4 +1,22 @@
 - hosts: k8s
+  vars:  
+   content:
+     - uri: github.com/containerd/containerd/releases/download/v1.6.4/ 
+       tarball: 
+         - name: containerd-1.6.4-linux-amd64.tar.gz
+         - path: /usr/local
+     - uri: github.com/containernetworking/plugins/releases/download/v1.1.1/ 
+       tarball: 
+         - name: cni-plugins-linux-amd64-v1.1.1.tgz
+         - path: /opt/cni/bin
+     - uri: github.com/opencontainers/runc/releases/download/v1.1.4/
+       install:
+         - name: runc.amd64
+         - path: /usr/local/sbin/runc
+     - uri: raw.githubusercontent.com/containerd/containerd/main/
+       service:
+         - containerd.service
+         - path: /usr/local/lib/systemd/system/containerd.service
   become: yes
   roles:
 #    - role: nn-off
