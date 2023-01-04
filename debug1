@@ -1,1 +1,19 @@
 - hosts: k8s
+  name: vars debug
+  vars:
+    tst:
+     dfr:
+       name: gyy
+       path: /jug
+     juy:
+       name: ytf
+       path: /res
+
+  tasks:
+    - name: msgv
+      debug:
+        msg:
+          - item.item.key
+      loop: "{{ tst | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
