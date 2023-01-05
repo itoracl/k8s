@@ -1,5 +1,0 @@
----
-# vars file for jenkins-install
-java: "openjdk-17-jdk"
-jenkins:
-   repo_URL: "https://pkg.jenkins.io/debian-stable/jenkins.io.key"
