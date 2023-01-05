@@ -18,6 +18,6 @@
           - "{{ item.key }}"
           - "{{ item.value.name }}"
           - "{{ item.value.path }}"
-      loop: "{{ tst | selectattr('dn','in', item.value.tag) | dict2items }}"
+      loop: "{{ tst | selectattr('dn','in', tag) | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
