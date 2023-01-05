@@ -14,7 +14,7 @@
   tasks:
     - debug:
         msg:
-        - "{{ tst | dict2items | selectattr('dn', 'in', dfr.tag) }}"
+        - "{{ tst | dict2items | selectattr('dn', 'in', tst.dfr.tag) }}"
         
     - name: msgv
       debug:
