@@ -5,9 +5,11 @@
      dfr:
        name: gyy
        path: /jug
+       tag: dn-tar
      juy:
        name: ytf
        path: /res
+       tag: dn-inst
 
   tasks:
     - name: msgv
@@ -16,6 +18,6 @@
           - "{{ item.key }}"
           - "{{ item.value.name }}"
           - "{{ item.value.path }}"
-      loop: "{{ tst | dict2items }}"
+      loop: "{{ tst | dict2items | selectattr('dn','in', tag) }}"
       loop_control:
         label: "{{ item.key }}"
