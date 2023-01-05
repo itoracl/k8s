@@ -12,12 +12,16 @@
        tag: dn-inst
 
   tasks:
+    - debug:
+        msg:
+        - "{{ tst | dict2items | selectattr('tag', 'in', 'dn') }}"
+        
     - name: msgv
       debug:
         msg:
           - "{{ item.key }}"
           - "{{ item.value.name }}"
           - "{{ item.value.path }}"
-      loop: "{{ tst | selectattr('tag','in', dn) | dict2items }}"
+      loop: "{{ tst | dict2items | selectattr('tag','in', dn)  }}"
       loop_control:
         label: "{{ item.key }}"
