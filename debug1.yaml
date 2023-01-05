@@ -14,7 +14,7 @@
   tasks:
     - debug:
         msg:
-        - "{{ tst | dict2items | selectattr('value.tag', 'in', 'dn') | map(attribute='key')|
+        - "{{ tst | dict2items | #selectattr('value.tag', 'in', 'dn') | map(attribute='key')|
               list }}"
         
     - name: msgv
