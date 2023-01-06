@@ -11,6 +11,7 @@
       label: "{{ item.key }}"
         
   - name: Copy artifacts
+    become: yes
     copy:
       src:  "/tmp/{{ item.value.name }}"
       dest: "/tmp/{{ item.value.path }}"
@@ -20,6 +21,7 @@
       label: "{{ item.key }}"
         
   - name: Extract archived
+    become: yes
     unarchive:
       src:  "/tmp/{{ item.value.name }}"
       dest: "/tmp/{{ item.value.path }}"
@@ -31,8 +33,8 @@
       label: "{{ item.key }}"
 
   - name: Install module
+    become: yes
     shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp/{{ item.value.path }}"
-      become: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
