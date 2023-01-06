@@ -14,7 +14,7 @@
     become: yes
     copy:
       src:  "/tmp/{{ item.value.name }}"
-      dest: "/tmp/{{ item.value.path }}"
+      dest: "/tmp{{ item.value.path }}"
       remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'service' ) | list }}"
     loop_control:
@@ -24,7 +24,7 @@
     become: yes
     unarchive:
       src:  "/tmp/{{ item.value.name }}"
-      dest: "/tmp/{{ item.value.path }}"
+      dest: "/tmp{{ item.value.path }}"
       owner: root
       mode:  0755
       remote_src: yes
@@ -34,7 +34,7 @@
 
   - name: Install module
     become: yes
-    shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp/{{ item.value.path }}"
+    shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp{{ item.value.path }}"
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
