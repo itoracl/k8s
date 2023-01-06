@@ -9,7 +9,18 @@
     loop: "{{ content | dict2items  }}"
     loop_control:
       label: "{{ item.key }}"
-        
+
+  - name: Creates directory
+    file:
+      path: "/tmp{{ item.value.path }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    loop: "{{ content | dict2items  }}"
+    loop_control:
+      label: "{{ item.key }}"
+
   - name: Copy artifacts
     become: yes
     copy:
