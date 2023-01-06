@@ -47,6 +47,8 @@
   - name: Install module
     become: yes
     shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp{{ item.value.path }}"
+    args:
+      creates: "/tmp{{ item.value.path }}/{{ item.value.name }}"
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
