@@ -33,3 +33,10 @@
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'tar' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
+
+  - name: Install module
+    shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp/{{ item.value.path }}"
+      become: yes
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
