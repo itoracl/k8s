@@ -11,6 +11,7 @@
       label: "{{ item.key }}"
 
   - name: Creates directory
+    become: yes
     file:
       path: "/tmp{{ item.value.path }}"
       state: directory
