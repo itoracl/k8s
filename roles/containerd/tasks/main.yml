@@ -1,27 +1,35 @@
 ---
 # tasks file for containerd
-
+{#
 - name: containerd block
   block:
-  
+   when: 1 == 0
+#) 
   - name: Wget artifacts
     get_url:
-      url: "https://{{ item.key }}{{ item.value }}"
-      dest: "/tmp/{{ item.value }}"
+      url: "https://{{ item.key }}{{ item.value.name }}"
+      dest: "/tmp/{{ item.value.name }}"
       force: false
-    with_dict:
-        - "{{ content.tarball }}"
-        - "{{ content.install}}"
-        - "{{ content.service}}"
+    loop: "{{ content | dict2items  }}"
+    loop_control:
+      label: "{{ item.key }}"
         
   - name: Copy artifacts
     copy:
-      src: "/tmp/{{ item.value }}"
-      dest: "/tmp/{{ item.path }}"
+      src:  "/tmp/{{ item.value.name }}"
+      dest: "/tmp/{{ item.value.path }}"
       remote_src: yes
-    with_dict: "{{ content.service }}"
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'service' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
         
-  when: 1 == 0
-#- name: Extract archived
-#  unarchive:
-#    src:
+  - name: Extract archived
+    unarchive:
+      src:  "/tmp/{{ item.value.name }}"
+      dest: "/tmp/{{ item.value.path }}"
+      owner: root
+      mode:  0755
+      remote_src: yes
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'tar' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
