@@ -58,7 +58,7 @@
   - name: containerd file config.toml
     copy:
       src: config.toml
-      dest: /etc/containerd/config.toml
+      dest: /etc/containerd
       owner: root
       group: root
       mode: u=rw,g=r,o=r
@@ -66,6 +66,14 @@
   - name: cni template file
     template:
       src: 10-containerd-net.conflist.j2
+      dest: /etc/cni/net.d
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+
+  - name: cni lo file
+    copy:
+      src: 99-loopback.conf
       dest: /etc/cni/net.d
       owner: root
       group: root
