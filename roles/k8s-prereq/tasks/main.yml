@@ -6,7 +6,7 @@
    - name: copy systemd conf files
      copy:
        src: "{{ item.key }}"
-       dest: "{{ item.value }}
+       dest: "{{ item.value }}"
        owner: root
        group: root
        mode: u=rw,g=r,o=r
@@ -16,7 +16,7 @@
      modprobe:
        name: "{{ item }}"
        state: present
-     with_items: content_modules
+     with_items: "{{ content_modules }}"
 
    - name: sysctl --system
      shell: sysctl --system
