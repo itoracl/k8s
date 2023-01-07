@@ -1,2 +1,13 @@
 ---
 # handlers file for containerd
+
+ - name: reload systemd
+   systemd:
+     daemon-reload: true
+     
+ - name: restart systemd
+   systemd:
+     name: containerd
+     enabled: true
+     state: restarted
+     
