@@ -13,7 +13,7 @@
 
   - name: Creates directory
     file:
-      path: "/tmp{{ item.value.path }}"
+      path: "{{ item.value.path }}"
       state: directory
       owner: root
       group: root
@@ -26,10 +26,11 @@
     become: yes
     copy:
       src:  "/tmp/{{ item.value.name }}"
-      dest: "/tmp{{ item.value.path }}"
+      dest: "{{ item.value.path }}"
       remote_src: yes
     notify:
       - reload systemd
+      - restart systemd
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'service' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
@@ -38,7 +39,7 @@
     become: yes
     unarchive:
       src:  "/tmp/{{ item.value.name }}"
-      dest: "/tmp{{ item.value.path }}"
+      dest: "{{ item.value.path }}"
       owner: root
       mode:  0755
       remote_src: yes
@@ -48,9 +49,9 @@
 
   - name: Install module
     become: yes
-    shell: install -m 755 "/tmp/{{ item.value.name }}" "/tmp{{ item.value.path }}"
+    shell: install -m 755 "/tmp/{{ item.value.name }}" "{{ item.value.path }}"
     args:
-      creates: "/tmp{{ item.value.path }}/{{ item.value.name }}"
+      creates: "{{ item.value.path }}/{{ item.value.name }}"
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
