@@ -15,5 +15,5 @@ content:
       tag:  dnl-install
     raw.githubusercontent.com/containerd/containerd/main/ : 
       name: containerd.service
-      path: /usr/local/lib/systemd/system/containerd.service
+      path: /usr/local/lib/systemd/system
       tag:  service
