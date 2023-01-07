@@ -1,10 +1,5 @@
 ---
 # handlers file for containerd
-
- - name: reload systemd
-   become: yes
-   systemd:
-     daemon-reload: true
      
  - name: restart containerd
    become: yes
