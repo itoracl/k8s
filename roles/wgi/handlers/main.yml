@@ -1,2 +1,16 @@
 ---
 # handlers file for wgi
+
+ - name: reload systemd
+   become: yes
+   systemd:
+     daemon-reload: true
+     
+ - name: restart systemd
+   become: yes
+   systemd:
+     name: "{{ item.name }}"
+     enabled: true
+     state: restarted
+   when: item.changed
+   with_items: "{{ artifacts_restart.results }}"
