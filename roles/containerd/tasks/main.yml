@@ -1,7 +1,9 @@
 ---
 # tasks file for containerd
  
-  - name: containerd file config.toml
+- block:
+
+- name: containerd file config.toml
     copy:
       src: config.toml
       dest: /etc/containerd
