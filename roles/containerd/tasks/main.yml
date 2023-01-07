@@ -1,5 +1,6 @@
 ---
 # tasks file for containerd
+    become: yes
 
   - name: Wget artifacts
     get_url:
@@ -11,7 +12,6 @@
       label: "{{ item.key }}"
 
   - name: Creates directory
-    become: yes
     file:
       path: "/tmp{{ item.value.path }}"
       state: directory
@@ -28,6 +28,8 @@
       src:  "/tmp/{{ item.value.name }}"
       dest: "/tmp{{ item.value.path }}"
       remote_src: yes
+    notify:
+      - reload systemd
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'service' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
@@ -62,7 +64,9 @@
       owner: root
       group: root
       mode: u=rw,g=r,o=r
-
+    notify:
+      - restart systemd
+    
   - name: cni template file
     template:
       src: 10-containerd-net.conflist.j2
@@ -78,3 +82,4 @@
       owner: root
       group: root
       mode: u=rw,g=r,o=r
+
