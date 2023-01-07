@@ -9,7 +9,8 @@
  - name: restart systemd
    become: yes
    systemd:
-     name: containerd
+     name: "{{ item.name }}"
      enabled: true
      state: restarted
-     
+   when: item.changed
+   with_items: "{{ artifacts_restart.results }}"
