@@ -9,7 +9,7 @@
       group: root
       mode: u=rw,g=r,o=r
     notify:
-      - restart systemd
+      - restart containerd
     
   - name: cni template file
     template:
