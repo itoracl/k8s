@@ -1,14 +1,14 @@
 ---
 # tasks file for containerd
 
-  - name: Wget artifacts
-    get_url:
-      url: "https://{{ item.key }}{{ item.value.name }}"
-      dest: "/tmp/{{ item.value.name }}"
-      force: false
-    loop: "{{ content | dict2items  }}"
-    loop_control:
-      label: "{{ item.key }}"
+ - name: Wget artifacts
+   get_url:
+     url: "https://{{ item.key }}{{ item.value.name }}"
+     dest: "/tmp/{{ item.value.name }}"
+     force: false
+   loop: "{{ content | dict2items  }}"
+   loop_control:
+     label: "{{ item.key }}"
  
  - block:
 
