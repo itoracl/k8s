@@ -28,6 +28,7 @@
       src:  "/tmp/{{ item.value.name }}"
       dest: "{{ item.value.path }}"
       remote_src: yes
+    register: artifacts_restart
     notify:
       - reload systemd
       - restart systemd
