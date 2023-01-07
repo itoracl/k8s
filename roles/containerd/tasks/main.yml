@@ -3,7 +3,7 @@
  
 - block:
 
-- name: containerd file config.toml
+  - name: containerd file config.toml
     copy:
       src: config.toml
       dest: /etc/containerd
