@@ -6,11 +6,9 @@
    systemd:
      daemon-reload: true
      
- - name: restart systemd
+ - name: restart containerd
    become: yes
    systemd:
-     name: "{{ item.name }}"
+     name: containerd
      enabled: true
      state: restarted
-   when: item.changed
-   with_items: "{{ artifacts_restart.results }}"
