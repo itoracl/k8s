@@ -1,16 +1,16 @@
 ---
 # tasks file for containerd
 
- - name: Wget artifacts
-   get_url:
-     url: "https://{{ item.key }}{{ item.value.name }}"
-     dest: "/tmp/{{ item.value.name }}"
-     force: false
-   loop: "{{ content | dict2items  }}"
-   loop_control:
+- name: Wget artifacts
+  get_url:
+    url: "https://{{ item.key }}{{ item.value.name }}"
+    dest: "/tmp/{{ item.value.name }}"
+    force: false
+  loop: "{{ content | dict2items  }}"
+  loop_control:
      label: "{{ item.key }}"
  
- - block:
+- block:
 
   - name: Creates directory
     file:
@@ -85,5 +85,5 @@
       group: root
       mode: u=rw,g=r,o=r
 
-   when: true
-   become: yes
+  when: true
+  become: yes
