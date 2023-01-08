@@ -6,7 +6,7 @@ pipeline {
     stages { 
         stage('Deploy') { 
             steps { 
-                sh 'ansible-playbook init-phc.yaml'//
+                sh 'ansible-playbook init-pha.yaml'//
             //   echo $ANS_HOME
             //   ansiblePlaybook becomeUser: 'cloudshell', colorized: true, forks: 2, playbook: 'debug.yaml'
             }
