@@ -1,0 +1,12 @@
+# defaults file for k8s
+
+content:
+  #kubernetes-archive-keyring.gpg 
+  packages.cloud.google.com/apt/doc/:
+    name: apt-key.gpg
+    path:  /etc/apt/keyrings/
+    tag: plain
+  Add-the-Kubernetes-apt-repository:
+    name: kubernetes.list
+    path: /etc/apt/sources.list.d
+    tag: file
