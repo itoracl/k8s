@@ -6,7 +6,10 @@
     url: "https://{{ item.key }}{{ item.value.name }}"
     dest: "/tmp/{{ item.value.name }}"
     force: false
-  loop: "{{ content | dict2items  }}"
+  loop: "{{ content | dict2items |
+            rejectattr('value.tag', 'search', 'file' ) |
+            rejectattr('value.tag', 'search', 'j2t' ) |
+            list }}"
   loop_control:
      label: "{{ item.key }}"
  
