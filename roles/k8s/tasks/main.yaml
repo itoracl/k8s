@@ -8,7 +8,7 @@
 
     - name: Add specified repository into sources list
       ansible.builtin.apt_repository:
-        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/apt-key.asc] http://apt.kubernetes.io/ kubernetes-xenial main
+        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/apt-key.asc] https://apt.kubernetes.io/ kubernetes-xenial main
         state: present
 
     - name: install executables
