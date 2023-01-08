@@ -1,0 +1,3 @@
+- hosts: k8s
+  roles:
+    - k8s
