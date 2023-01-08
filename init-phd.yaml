@@ -1,0 +1,4 @@
+- hosts: k8s
+  become: yes
+  roles:
+    - k8s
