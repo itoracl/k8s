@@ -23,7 +23,7 @@
     loop_control:
       label: "{{ item.key }}"
 
-  - name: Copy artifacts
+  - name: Copy services artifacts
     copy:
       src:  "/tmp/{{ item.value.name }}"
       dest: "{{ item.value.path }}"
@@ -55,6 +55,16 @@
     loop_control:
       label: "{{ item.key }}"
       
+  - name: Copy plain artifacts
+    copy:
+      src:  "/tmp/{{ item.value.name }}"
+      dest: "{{ item.value.path }}"
+      remote_src: yes
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'plain' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
+
+
   when: true
   become: yes
 ### 
