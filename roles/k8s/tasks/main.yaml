@@ -1,5 +1,21 @@
 ---
 # tasks file for k8s
+
+    - name: repo |no apt key
+      ansible.builtin.get_url:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        dest: /etc/apt/trusted.gpg.d/apt-key.asc
+
+    - name: Add specified repository into sources list
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/apt-key.asc] http://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+
+    - name: install executables
+      package:
+        name: "{{ k8s_app }}"
+        state: present
+      
     - name: Change various sysctl-settings
       sysctl:
         name: "{{ item.key }}"
