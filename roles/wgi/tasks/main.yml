@@ -64,6 +64,21 @@
     loop_control:
       label: "{{ item.key }}"
 
+  - name: Copy role files
+    copy:
+      src:  "{{ item.value.name }}"
+      dest: "{{ item.value.path }}"
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'file' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
+      
+  - name: Copy role templates
+    template:
+      src:  "{{ item.value.name }}"
+      dest: "{{ item.value.path }}"
+    loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'j2t' ) | list }}"
+    loop_control:
+      label: "{{ item.key }}"
 
   when: true
   become: yes
