@@ -1,9 +1,5 @@
 ---
 # vars file for k8s-prereq
-
-content_files:
-  k8s.conf: /etc/modules-load.d
-  k8sys.conf: /etc/sysctl.d
   
 content_modules:
   - overlay
