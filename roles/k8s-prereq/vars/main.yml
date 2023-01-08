@@ -9,7 +9,7 @@ content_modules:
   - overlay
   - br_netfilter
 
-k8s_app:
-  - kubeadm
-  - kubelet
-  - kubectl
+dep_app:
+  - apt-transport-https 
+  - ca-certificates 
+  - curl
