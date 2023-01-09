@@ -27,11 +27,11 @@ pipeline {
                    }
              }
            }
- //        stage('Bootstrap cluster with kubeadm'){
- //           steps { 
- //               sh 'ansible-playbook init.yaml'
- //           }
- //        }
         }
+         stage('Bootstrap cluster with kubeadm'){
+            steps { 
+                sh 'ansible-playbook init.yaml'
+            }
+         }
     }
 }
