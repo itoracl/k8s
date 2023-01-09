@@ -10,7 +10,7 @@ content:
     name: ./roles/k8s-install/files/kubernetes.list
     path: /etc/apt/sources.list.d
     tag: file
-  kubectl-config-systemd-cgroup:
+  kubelet-config-systemd-cgroup:
     name: ./roles/k8s-install/files/config.yaml
     path: /var/lib/kubelet
     tag: file
