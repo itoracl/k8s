@@ -1,0 +1,10 @@
+[masters]
+k8s
+
+[workers]
+r01
+r59
+
+[jenkins]
+k8s
+
