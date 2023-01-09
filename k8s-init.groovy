@@ -1,5 +1,8 @@
 pipeline { 
     agent any
+    options {
+        parallelsAlwaysFailFast()
+    }
     stages { 
         stage('Deploy Kubernetes Cluster Conform to kubeadm 1.26 kubernetes.io official') { 
            parallel {
@@ -30,5 +33,5 @@ pipeline {
             }
           }
         }
-    }
+     }
 }
