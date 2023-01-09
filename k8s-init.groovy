@@ -18,11 +18,11 @@ pipeline {
                      sh 'ansible-playbook init-phc.yaml'
                    }
              }
-                stage('Installing kubeadm, kubelet and kubectl'){
+             stage('Installing kubeadm, kubelet and kubectl'){
                    steps { 
                      sh 'ansible-playbook init-pha.yaml'
                    }
-                }
+             }
            }
           stage('Bootstrap cluster with kubeadm'){
             steps { 
