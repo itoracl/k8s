@@ -1,14 +1,21 @@
 pipeline { 
     agent any
-    environment {
-        ANS_HOME = tool('ansible')
-    }
     stages { 
-        stage('Deploy') { 
+        stage('Deploy Kubernetes Cluster Conform to kubeadm 1.26 kubernetes.io official') { 
+           parallel {
+                stage('Apply system requirements')
+                   steps { 
+                     sh 'ansible-playbook init-phd.yaml'
+                   }
+                stage('Installing containerd container runtime')
+                   steps{
+                     sh 'ansible-playbook init-phb.yaml'
+                   }
+             Configuring systemd cgroup driver
+
+           }
             steps { 
-                sh 'ansible-playbook init-pha.yaml'//
-            //   echo $ANS_HOME
-            //   ansiblePlaybook becomeUser: 'cloudshell', colorized: true, forks: 2, playbook: 'debug.yaml'
+                sh 'ansible-playbook init-pha.yaml'
             }
         }
     }
