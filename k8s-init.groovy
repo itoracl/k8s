@@ -4,7 +4,7 @@ pipeline {
         parallelsAlwaysFailFast()
     }
     stages { 
-        stage('Deploy Kubernetes Cluster Conform to kubeadm 1.26 kubernetes.io official') { 
+        stage('Deploy Kubernetes Cluster Conform to kubeadm 1.26 kubernetes.io official'){ 
            parallel {
              stage('Apply system requirements'){
                    steps { 
@@ -27,11 +27,11 @@ pipeline {
                    }
              }
            }
-          stage('Bootstrap cluster with kubeadm'){
-            steps { 
-                sh 'ansible-playbook init.yaml'
-            }
-          }
+ //        stage('Bootstrap cluster with kubeadm'){
+ //           steps { 
+ //               sh 'ansible-playbook init.yaml'
+ //           }
+         }
         }
-     }
+    }
 }
