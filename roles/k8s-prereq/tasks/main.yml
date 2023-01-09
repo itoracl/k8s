@@ -7,16 +7,7 @@
      package:
        name: "{{ dep_app }}"
        state: present
- 
-   - name: copy systemd conf files
-     copy:
-       src: "{{ item.key }}"
-       dest: "{{ item.value }}"
-       owner: root
-       group: root
-       mode: u=rw,g=r,o=r
-     with_dict: "{{ content_files }}"
-     
+      
    - name: load kernel modules 
      modprobe:
        name: "{{ item }}"
