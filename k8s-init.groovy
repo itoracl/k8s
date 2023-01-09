@@ -11,12 +11,16 @@ pipeline {
                    steps{
                      sh 'ansible-playbook init-phb.yaml'
                    }
-             Configuring systemd cgroup driver
-
+                stage('Configuring systemd cgroup driver')
+                   steps{
+                     sh 'ansible-playbook init-phc.yaml'
+                   }
            }
+          stage('Bootstrap cluster with kubeadm'){
             steps { 
                 sh 'ansible-playbook init-pha.yaml'
             }
+          }
         }
     }
 }
