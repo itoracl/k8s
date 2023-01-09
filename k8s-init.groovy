@@ -4,7 +4,7 @@ pipeline {
         parallelsAlwaysFailFast()
     }
     stages { 
-        stage('Deploy Kubernetes Cluster Conform to kubeadm 1.26 kubernetes.io official'){ 
+        stage('Deploy Kubernetes \nCluster Conform to kubeadm 1.26 kubernetes.io official'){ 
            parallel {
              stage('Apply system requirements'){
                    steps { 
