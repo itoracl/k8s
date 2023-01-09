@@ -1,6 +1,9 @@
 [masters]
 k8s
 
+[master]
+k8s
+
 [etcd]
 k8s
 
