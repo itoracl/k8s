@@ -31,7 +31,7 @@ pipeline {
  //           steps { 
  //               sh 'ansible-playbook init.yaml'
  //           }
-         }
+ //        }
         }
     }
 }
