@@ -8,7 +8,7 @@ pipeline {
            parallel {
              stage('Apply system requirements'){
                    steps { 
-                     sh 'ansible-playbook init-phd.yaml'
+                     sh 'ansible-playbook -i files/hosts init-phd.yaml'
                    }
              }
              stage('Installing containerd container runtime'){
