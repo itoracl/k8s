@@ -3,7 +3,7 @@
 
     - name: Install dashboard helm chart from a repo specifying path
       become: yes
-      become_user: cloudshell
+#      become_user: cloudshell
       kubernetes.core.helm:
         chart_repo_url: https://kubernetes.github.io/dashboard/
         chart_ref: kubernetes-dashboard
