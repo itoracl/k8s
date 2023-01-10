@@ -11,8 +11,8 @@
         var: kubeadm.stdout_lines
 
     - name: delete .kube directory
-      become: yes
-      become_user: cloudshell 
+#      become: yes
+#      become_user: cloudshell 
       file:
         path: $HOME/.kube
         state: absent
