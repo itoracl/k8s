@@ -19,7 +19,7 @@
     file:
       path: "{{
                item.value.path
-                  if not (item.value.tag == 'install')
+                  if not (item.value.tag in ['install','j2t'])
                      else ( item.value.path | dirname )
               }}"
       state: directory
