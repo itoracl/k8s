@@ -4,6 +4,6 @@
     - name: install Pod network
       become: yes
 #      become_user: cloudshell
-      shell: kubectl --cache-dir='/home/cloudshell/.kube/cache' --kubeconfig='/home/cloudshell/.kube/config' apply -f ./roles/install-flannel/files/kube-flannel.yml 
-#      args:
-#        chdir: /home/cloudshell
+      shell: kubectl --cache-dir='/home/cloudshell/.kube/cache' --kubeconfig='/home/cloudshell/.kube/config' apply -f /home/cloudshell/kube/kube-flannel.yml 
+      args:
+        chdir: /home/cloudshell
