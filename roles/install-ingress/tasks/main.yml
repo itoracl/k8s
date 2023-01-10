@@ -11,3 +11,5 @@
         name: ingress-nginx
         namespace: ingress-nginx
         create_namespace: true
+      environment:
+        KUBECONFIG: "{{ KUBECONFIG }}"
