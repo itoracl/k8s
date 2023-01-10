@@ -1,8 +1,8 @@
 ---
 # defaults file for containerd
 content:
-    github.com/containerd/containerd/releases/download/v1.6.2/ : 
-      name: containerd-1.6.2-linux-amd64.tar.gz
+    github.com/containerd/containerd/releases/download/v1.6.4/ : 
+      name: containerd-1.6.4-linux-amd64.tar.gz
       path: /usr/local
       tag:  tar
     github.com/containernetworking/plugins/releases/download/v1.1.1/ : 
