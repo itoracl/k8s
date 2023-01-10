@@ -17,9 +17,11 @@
 
   - name: Creates directory
     file:
-      path: "{% {{ item.value.path }}
-              if {{ item.value.tag }} <> 'install'
-              else {{ item.value.path | dirname }} %}"
+      path: "{{
+              {{ item.value.path }}
+                  if {{ item.value.tag }} <> 'install'
+                     else {{ item.value.path | dirname }} 
+              }}"
       state: directory
       owner: root
       group: root
