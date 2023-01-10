@@ -11,5 +11,7 @@
         name: kubernetes-dashboard
         namespace: kubernetes-dashboard
         create_namespace: true
+      args:
+        chdir: /home/cloudshell
       environment:
         KUBECONFIG: "{{ KUBECONFIG }}"
