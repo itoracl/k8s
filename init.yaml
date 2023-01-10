@@ -14,11 +14,12 @@
         var: kubeadm.stdout_lines
 
     - name: create .kube directory
-      become: yes
-      become_user: cloudshell 
+#      become: yes
+#      become_user: cloudshell 
       file:
-        path: $HOME/.kube
+        path: /home/cloudshell/.kube
         state: directory
+        owner: cloudshell
         mode: 0755
 
     - name: copy admin.conf to user's kube config
