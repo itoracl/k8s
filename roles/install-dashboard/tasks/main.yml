@@ -1,13 +1,13 @@
 ---
 # tasks file for install-dashboard
 
-    - name: Install ingress controller helm chart from a repo specifying path
+    - name: Install dashboard helm chart from a repo specifying path
       become: yes
       become_user: cloudshell
       kubernetes.core.helm:
-        chart_repo_url: https://kubernetes.github.io/ingress-nginx
-        chart_ref: ingress-nginx
+        chart_repo_url: https://kubernetes.github.io/dashboard/
+        chart_ref: kubernetes-dashboard
         state: present
-        name: ingress-nginx
-        namespace: ingress-nginx
+        name: kubernetes-dashboard
+        namespace: kubernetes-dashboard
         create_namespace: true
