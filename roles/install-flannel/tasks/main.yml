@@ -1,8 +1,6 @@
 ---
 # tasks file for install-flannel
 
-    become: yes
-
     - name: install Pod network
       become: yes
       become_user: cloudshell
