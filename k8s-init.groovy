@@ -33,5 +33,24 @@ pipeline {
                 sh 'ansible-playbook init.yaml'
             }
          }
+        stage('Install necessary kubernetes cluster services'){ 
+           parallel {
+             stage('Installing flannel network overlay '){
+                   steps { 
+                     sh 'ansible-playbook init-ppha.yaml'
+                   }
+             }
+             stage('Installing kubernetes dashboard recommended'){
+                   steps{
+                     sh 'ansible-playbook init-pphb.yaml'
+                   }
+             }
+             stage('Installing ingress controller'){
+                   steps{
+                     sh 'ansible-playbook init-pphc.yaml'
+                   }
+             }
+           }
+        }
     }
 }
