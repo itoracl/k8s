@@ -29,5 +29,5 @@
       group: root
       mode: u=rw,g=r,o=r
 
-  when: true
+  when: false
   become: yes
