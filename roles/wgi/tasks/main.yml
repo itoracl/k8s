@@ -20,7 +20,7 @@
       path: "{{
                item.value.path
                   if item.value.tag  is not sameas 'install'
-                     else ( item.value.path | dirname )
+                     else ( (item.value.path + '.') | dirname )
               }}"
       state: directory
       owner: root
