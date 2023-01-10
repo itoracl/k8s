@@ -2,11 +2,11 @@
 # defaults file for k8s-prereq
 
 content:
-  add-persistent-modules:
+  add-persistent-kernel-modules:
     name: ./roles/k8s-prereq/files/k8s.conf
     path: /etc/modules-load.d
     tag: file
-  systemd-sysctl-settings:
+  systemd-persistent-sysctl-settings:
     name: ./roles/k8s-prereq/files/k8sys.conf
     path: /etc/sysctl.d
     tag: file
