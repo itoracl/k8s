@@ -11,3 +11,5 @@
         name: kubernetes-dashboard
         namespace: kubernetes-dashboard
         create_namespace: true
+      environment:
+        KUBECONFIG: "{{ KUBECONFIG }}"
