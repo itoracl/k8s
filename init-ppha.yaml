@@ -1,4 +1,4 @@
 - hosts: master
-  become: yes
+#  become: yes
   roles:
     - install-flannel
