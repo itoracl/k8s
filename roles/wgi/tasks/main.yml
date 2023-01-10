@@ -48,6 +48,7 @@
       src:  "/tmp/{{ item.value.name }}"
       dest: "{{ item.value.path }}"
       owner: root
+      group: root
       mode:  0755
       remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'tar' ) | list }}"
@@ -66,6 +67,9 @@
     copy:
       src:  "/tmp/{{ item.value.name }}"
       dest: "{{ item.value.path }}"
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
       remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'plain' ) | list }}"
     loop_control:
@@ -75,6 +79,10 @@
     copy:
       src:  "{{ item.value.name }}"
       dest: "{{ item.value.path }}"
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+      remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'file' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
@@ -83,6 +91,10 @@
     template:
       src:  "{{ item.value.name }}"
       dest: "{{ item.value.path }}"
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+      remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'j2t' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
