@@ -1,2 +1,4 @@
 ---
 # vars file for k8s-copy-admin
+
+KUBECONFIG: /etc/kubernetes/admin.conf
