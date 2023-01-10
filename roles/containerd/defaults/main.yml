@@ -17,3 +17,15 @@ content:
       name: containerd.service
       path: /usr/local/lib/systemd/system
       tag:  service
+    containerd-file-config.toml:
+      name: ./roles/containerd/files/config.toml
+      path: /etc/containerd
+      tag: file
+    cni-template-j2file:
+      name: ./roles/containerd/templates/10-containerd-net.conflist.j2
+      path: /etc/cni/net.d/10-containerd-net.conflist
+      tag: j2t
+    cni-lo-file:
+      name: ./roles/containerd/files/99-loopback.conf
+      path: /etc/cni/net.d
+      tag: file
