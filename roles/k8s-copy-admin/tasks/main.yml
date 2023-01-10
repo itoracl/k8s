@@ -17,5 +17,7 @@
         remote_src: yes
         owner: cloudshell
         mode: 0700
+      environment:
+        KUBECONFIG: /etc/kubernetes/admin.conf
         
    become: yes
