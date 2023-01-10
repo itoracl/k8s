@@ -82,7 +82,6 @@
       owner: root
       group: root
       mode: u=rw,g=r,o=r
-      remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'file' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
@@ -94,7 +93,6 @@
       owner: root
       group: root
       mode: u=rw,g=r,o=r
-      remote_src: yes
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'j2t' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
