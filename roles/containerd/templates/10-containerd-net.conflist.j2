@@ -1,5 +1,5 @@
 {
-  "cniVersion": "1.1.1",
+  "cniVersion": "1.0.0",
   "name": "containerd-net",
   "plugins": [
     {
@@ -12,7 +12,7 @@
         "type": "host-local",
         "ranges": [
           [{
-            "subnet": "10.244.{{ '%03d' | format( ansible_default_ipv4.address.split('.').3 | int ) }}.0/24"
+            "subnet": "10.244.{{ ansible_default_ipv4.address.split('.').3 }}.0/24"
           }]
         ],
         "routes": [
