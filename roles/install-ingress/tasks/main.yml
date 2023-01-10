@@ -1,2 +1,13 @@
 ---
 # tasks file for install-ingress
+
+    - name: Install ingress controller helm chart from a repo specifying path
+      become: yes
+      become_user: cloudshell
+      kubernetes.core.helm:
+        chart_repo_url: https://kubernetes.github.io/ingress-nginx
+        chart_ref: ingress-nginx
+        state: present
+        name: ingress-nginx
+        namespace: ingress-nginx
+        create_namespace: true
