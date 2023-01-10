@@ -1,2 +1,9 @@
 ---
 # tasks file for install-flannel
+
+    - name: install Pod network
+      become: yes
+      become_user: cloudshell
+      shell: kubectl apply -f ./roles/install-flannel/files/kube-flannel.yml 
+      args:
+        chdir: /home/cloudshell
