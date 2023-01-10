@@ -6,7 +6,7 @@ helm:
     - ref:       kubernetes-dashboard
     - name:      kubernetes-dashboard
     - namespace: kubernetes-dashboard
-  kubernetes.github.io/ingress-nginx
+  kubernetes.github.io/ingress-nginx:
     - ref:       ingress-nginx
     - name:      ingress-nginx
     - namespace: ingress-nginx
