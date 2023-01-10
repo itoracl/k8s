@@ -58,7 +58,7 @@
   - name: Install module
     shell: install -m 755 "/tmp/{{ item.value.name }}" "{{ item.value.path }}"
     args:
-      creates: "{{ item.value.path }}/{{ item.value.name }}"
+      creates: "{{ item.value.path }}"
     loop: "{{ content | dict2items | selectattr('value.tag', 'search', 'install' ) | list }}"
     loop_control:
       label: "{{ item.key }}"
