@@ -34,7 +34,7 @@ pipeline {
             }
          }
         stage('Install necessary kubernetes cluster services'){ 
-           parallel {
+/           parallel {
              stage('Installing flannel network overlay '){
                    steps { 
                      sh 'ansible-playbook -i files/hosts init-ppha.yaml'
@@ -45,7 +45,7 @@ pipeline {
 //                     sh 'ansible-playbook -i files/hosts init-pphb.yaml'
 //                   }
 //             }
-           }
+//           }
         }
     }
 }
