@@ -1,3 +1,4 @@
 - hosts: master
   roles:
-    - install-dashboard
+    - helm-bundle-alpha
+    - manage-by-helm
