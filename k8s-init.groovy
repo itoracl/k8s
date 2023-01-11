@@ -40,14 +40,9 @@ pipeline {
                      sh 'ansible-playbook -i files/hosts init-ppha.yaml'
                    }
              }
-             stage('Installing kubernetes dashboard recommended'){
+             stage('Installing kubernetes dashboard recommended, ingress nginx controller'){
                    steps{
                      sh 'ansible-playbook -i files/hosts init-pphb.yaml'
-                   }
-             }
-             stage('Installing ingress controller'){
-                   steps{
-                     sh 'ansible-playbook -i files/hosts init-pphc.yaml'
                    }
              }
            }
