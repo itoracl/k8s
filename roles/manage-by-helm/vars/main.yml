@@ -1,4 +1,0 @@
----
-# vars file for manage-by-helm
-
-KUBECONFIG: /etc/kubernetes/admin.conf

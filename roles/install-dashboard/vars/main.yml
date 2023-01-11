@@ -1,4 +1,0 @@
----
-# vars file for install-dashboard
-
-KUBECONFIG: /etc/kubernetes/admin.conf
