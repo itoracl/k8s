@@ -4,11 +4,14 @@
     - name: Install helm chart from a repo specifying path
       become: yes
       kubernetes.core.helm:
-        chart_repo_url: https://kubernetes.github.io/dashboard/
-        chart_ref: kubernetes-dashboard
+        chart_repo_url: "https://{{ item.key }}"
+        chart_ref: "{{ item.value.ref }}"
         state: present
-        name: kubernetes-dashboard
-        namespace: kubernetes-dashboard
+        name: "{{ item.value.name }}"
+        namespace: "{{ item.value.namespace }}"
         create_namespace: true
       environment:
         KUBECONFIG: "{{ KUBECONFIG }}"
+      loop: "{{ helm | dict2items  }}"
+      loop_control:
+        label: "{{ item.key }}"
