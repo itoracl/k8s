@@ -3,10 +3,10 @@
 
 helm:
   kubernetes.github.io/dashboard/:
-    - ref:       kubernetes-dashboard
-    - name:      kubernetes-dashboard
-    - namespace: kubernetes-dashboard
+    ref:       kubernetes-dashboard
+    name:      kubernetes-dashboard
+    namespace: kubernetes-dashboard
   kubernetes.github.io/ingress-nginx:
-    - ref:       ingress-nginx
-    - name:      ingress-nginx
-    - namespace: ingress-nginx
+    ref:       ingress-nginx
+    name:      ingress-nginx
+    namespace: ingress-nginx
