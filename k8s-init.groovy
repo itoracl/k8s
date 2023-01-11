@@ -33,7 +33,7 @@ pipeline {
                 sh 'ansible-playbook -i files/hosts init.yaml'
             }
          }
-        stage('Install necessary kubernetes cluster services'){ 
+//        stage('Install necessary kubernetes cluster services'){ 
 //           parallel {
              stage('Installing flannel network overlay '){
                    steps { 
@@ -46,6 +46,6 @@ pipeline {
 //                   }
 //             }
 //           }
-        }
+//        }
     }
 }
