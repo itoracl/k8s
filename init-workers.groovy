@@ -30,7 +30,7 @@ pipeline {
         }
          stage('Join workers with kubeadm'){
             steps { 
-                sh 'ansible-playbook -i files/hosts init-workers.yaml'
+                sh 'ansible-playbook -i files/hosts join-w.yaml'
             }
          }
     }
