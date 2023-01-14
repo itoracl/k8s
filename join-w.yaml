@@ -1,6 +1,6 @@
-- hosts: k8s
+- hosts: master
   roles:
-    - role: k8s
+#    - role: k8s
   become: yes
   gather_facts: false
   tasks:
@@ -18,7 +18,7 @@
 
 - hosts: workers
   roles:
-    - role: k8s
+#    - role: k8s
   become: yes
   tasks:
     - name: join cluster
