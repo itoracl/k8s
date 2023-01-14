@@ -1,4 +1,4 @@
-- hosts: k8s
+- hosts: all
   roles:
     - wgi
     - containerd
