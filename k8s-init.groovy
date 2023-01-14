@@ -30,7 +30,7 @@ pipeline {
         }
          stage('Bootstrap cluster with kubeadm'){
             steps { 
-                sh 'ansible-playbook -i files/hosts init.yaml'
+                sh 'ansible-playbook -i files/hosts init-masters.yaml'
             }
          }
 //        stage('Install necessary kubernetes cluster services'){ 
