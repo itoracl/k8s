@@ -1,4 +1,6 @@
-- hosts: all 
+- hosts: 
+    - workers
+    - masters
   become: yes
   tasks:
     - name: reset the cluster
@@ -11,9 +13,10 @@
         var: kubeadm.stdout_lines
 
     - name: delete .kube directory
-#      become: yes
-#      become_user: cloudshell 
       file:
         path: $HOME/.kube
         state: absent
+
+    - name: Delete network interface
+      shell: ip link delete cni0
 
