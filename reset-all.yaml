@@ -14,9 +14,9 @@
 
     - name: delete .kube directory
       file:
-        path: $HOME/.kube
+        path: /home/cloudshell/.kube
         state: absent
 
     - name: Delete network interface
       shell: ip link delete cni0
-
+      ignore_errors: true
