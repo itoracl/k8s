@@ -16,8 +16,8 @@
     - debug: 
         var: join_command_raw.stdout_lines
 
-- Apply join command with bootstrap token
-  hosts: workers
+#- Apply join command with bootstrap token
+- hosts: workers
   become: yes
   tasks:
     - name: join cluster
