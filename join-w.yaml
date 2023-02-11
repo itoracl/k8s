@@ -1,4 +1,6 @@
-- hosts: master
+---
+- name: Get master join command with bootstrap token
+  hosts: master
   become: yes
   gather_facts: false
   tasks:
@@ -14,7 +16,8 @@
     - debug: 
         var: join_command_raw.stdout_lines
 
-- hosts: workers
+- Apply join command with bootstrap token
+  hosts: workers
   become: yes
   tasks:
     - name: join cluster
