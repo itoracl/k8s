@@ -12,7 +12,7 @@
         "type": "host-local",
         "ranges": [
           [{
-            "subnet": "10.244.{{ ansible_default_ipv4.address.split('.').3 }}.0/24"
+            "subnet": "10.244.{{ ansible_default_ipv4.address.split('.').3 | int - 2 }}.0/24"
           }]
         ],
         "routes": [
