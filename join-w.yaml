@@ -1,6 +1,4 @@
 - hosts: master
-  roles:
-#    - role: k8s
   become: yes
   gather_facts: false
   tasks:
@@ -17,15 +15,13 @@
         var: join_command_raw.stdout_lines
 
 - hosts: workers
-  roles:
-#    - role: k8s
   become: yes
   tasks:
     - name: join cluster
       shell: "{{ hostvars['k8s'].join_command }} --ignore-preflight-errors=all"
-        #argv: 
       args:
         chdir: $HOME
+      creates: /etc/kubernetes/admin.conf
       register: join_cluster
 
     - debug:
