@@ -24,7 +24,7 @@
       shell: "{{ hostvars['k8s'].join_command }} --ignore-preflight-errors=all"
       args:
         chdir: $HOME
-        creates: /etc/kubernetes/manifests/kube-apiserver.yaml
+        creates: /etc/kubernetes/manifests
       register: join_cluster
 
     - debug:
