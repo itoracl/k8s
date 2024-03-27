@@ -2,8 +2,8 @@
 
 content:
   #kubernetes-archive-keyring.gpg 
-  packages.cloud.google.com/apt/doc/:
-    name: apt-key.gpg
+  'pkgs.k8s.io/core:/stable:/v1.26/deb/':
+    name: Release.key
     path:  /etc/apt/keyrings/
     tag: plain
   Add-the-Kubernetes-apt-repository:

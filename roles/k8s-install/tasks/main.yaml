@@ -1,5 +1,15 @@
 ---
 # tasks file for k8s
+    - name: Unpack release key
+      ansible.builtin.command:
+        cmd: gpg --dearmor -o "{{ item.value.path }}kubernetes-apt-keyring.gpg" /tmp/"{{ item.value.name }}"
+        creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      loop: "{{ content | dict2items |
+                rejectattr('value.tag', 'search', 'file' ) |
+                rejectattr('value.tag', 'search', 'j2t' ) |
+                list }}"
+      loop_control:
+        label: "{{ item.key }}"
 
     - name: Update repositories cache and install k8s packages
       ansible.builtin.apt:
