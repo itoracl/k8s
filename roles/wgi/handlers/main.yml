@@ -9,7 +9,7 @@
  - name: restart systemd
    become: yes
    systemd:
-     name: "{{ item.name }}"
+     name: "{{ item.item.value.name }}"
      enabled: true
      state: restarted
    when: item.changed
